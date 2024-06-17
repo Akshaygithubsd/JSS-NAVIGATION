@@ -80,7 +80,7 @@ fun CameraFeaturesScreenB(locationEngineResult: LocationEngineCallback<LocationE
     val locationState = remember { mutableStateOf<Location?>(null) }
 
     Scaffold(topBar = {
-        TopAppBar(title = { Text(text = "Camera Features") })
+        TopAppBar(title = { Text(text = "CURRENT LOCATION") })
     }) {
 
         Column(
@@ -123,7 +123,7 @@ fun CameraFeaturesScreenB(locationEngineResult: LocationEngineCallback<LocationE
                         } // Pass to navigation function
                     } else {
                         // Handle case where location is not available
-                        Toast.makeText(context, "Unable to get current location.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "NAVIGATING TO B-BLOCK", Toast.LENGTH_SHORT).show()
                     }
                     // Add a marker at the specified location
                     val markerOptions = MarkerOptions()

@@ -34,6 +34,7 @@ import androidx.navigation.compose.rememberNavController
 import com.mappls.sdk.demo.sample.activities.camera.B_activity
 import com.mappls.sdk.demo.sample.activities.camera.C_Activity
 import com.mappls.sdk.demo.sample.activities.camera.CameraFeaturesActivity
+import com.mappls.sdk.demo.sample.activities.camera.DORMITORY
 import com.mappls.sdk.demo.sample.activities.camera.Jeweleery
 import com.mappls.sdk.demo.sample.activities.camera.Library_Activity
 import com.mappls.sdk.demo.sample.activities.camera.LocationCameraOptionActivity
@@ -135,12 +136,13 @@ fun Navigation(navController: NavHostController) {
 
         composable(MenuItem.MapEvents.route) {
             val list = listOf(
-                ListItem("Current Location","", LocationCameraOptionActivity::class.java),
+                //ListItem("Current Location","", LocationCameraOptionActivity::class.java),
                 ListItem("A-BLOCK","", CameraFeaturesActivity::class.java),
                 ListItem("B-BLOCK","", B_activity::class.java),
                 ListItem("C-BLOCK","", C_Activity::class.java),
                 ListItem("LIBRARY","", Library_Activity::class.java),
-                ListItem("JEWELLERY BLOCK","",Jeweleery::class.java),
+                ListItem("JEWELLERY-BLOCK","",Jeweleery::class.java),
+                ListItem("DORMITORY-BLOCK","", DORMITORY ::class.java),
 
 
                 )

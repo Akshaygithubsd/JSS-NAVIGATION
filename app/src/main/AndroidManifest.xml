@@ -96,6 +96,11 @@
             android:label="@string/title_activity_cameraFeatures"
             android:theme="@style/Theme.VectorMapComposeSample" />
         <activity
+            android:name=".sample.activities.camera.DORMITORY"
+            android:exported="false"
+            android:label="@string/title_activity_cameraFeatures"
+            android:theme="@style/Theme.VectorMapComposeSample" />
+        <activity
             android:name=".sample.activities.camera.LocationCameraOptionActivity"
             android:exported="false"
             android:label="@string/title_activity_location_camera_option"

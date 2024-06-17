@@ -43,7 +43,7 @@ import com.mappls.sdk.maps.location.engine.LocationEngineResult
 //import kotlinx.coroutines.flow.internal.NoOpContinuation.context
 //import kotlin.coroutines.jvm.internal.CompletedContinuation.context
 
-class C_Activity : ComponentActivity() {
+class DORMITORY : ComponentActivity() {
 
     private val locationEngineResult = object : LocationEngineCallback<LocationEngineResult> {
         override fun onSuccess(p0: LocationEngineResult?) {
@@ -61,7 +61,7 @@ class C_Activity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            CameraFeaturesScreenC(locationEngineResult)
+            DORMITORYSCREEN(locationEngineResult)
         }
     }
 
@@ -73,7 +73,7 @@ class C_Activity : ComponentActivity() {
 }
 
 @Composable
-fun CameraFeaturesScreenC(locationEngineResult: LocationEngineCallback<LocationEngineResult>) {
+fun DORMITORYSCREEN(locationEngineResult: LocationEngineCallback<LocationEngineResult>) {
     lateinit var currentlocation: CurrentLocation;
     var mapplsMap1: MapplsMap? = null
     val context = LocalContext.current
@@ -124,7 +124,7 @@ fun CameraFeaturesScreenC(locationEngineResult: LocationEngineCallback<LocationE
                         } // Pass to navigation function
                     } else {
                         // Handle case where location is not available
-                        Toast.makeText(context, "NAVIGATING TO C-BLOCK", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "NAVIGATING TO DORMITORY BLOCK", Toast.LENGTH_SHORT).show()
                     }
                     // Add a marker at the specified location
                     val markerOptions = MarkerOptions()
@@ -144,7 +144,7 @@ fun CameraFeaturesScreenC(locationEngineResult: LocationEngineCallback<LocationE
             val location = locationState.value
             if (mapplsMap != null) {
 
-                openGoogleMaps(context, LocationUtils.globallatitude, LocationUtils.globallongitude, 12.901638363201291, 77.50428904250977)
+                openGoogleMaps(context, LocationUtils.globallatitude, LocationUtils.globallongitude, 12.903501984234287, 77.50570913107607)
 
 
             }

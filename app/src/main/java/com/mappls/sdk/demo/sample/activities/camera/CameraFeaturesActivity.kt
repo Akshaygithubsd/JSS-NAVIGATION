@@ -27,6 +27,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
+import com.mappls.sdk.demo.MainActivity
 import com.mappls.sdk.demo.MapplsMap
 import com.mappls.sdk.demo.R
 import com.mappls.sdk.maps.MapplsMap
@@ -79,7 +80,7 @@ fun CameraFeaturesScreen(locationEngineResult: LocationEngineCallback<LocationEn
     val locationState = remember { mutableStateOf<Location?>(null) }
 
     Scaffold(topBar = {
-        TopAppBar(title = { Text(text = "Camera Features") })
+        TopAppBar(title = { Text(text = "CURRENT LOCATION") })
     }) {
 
         Column(
@@ -122,7 +123,7 @@ fun CameraFeaturesScreen(locationEngineResult: LocationEngineCallback<LocationEn
                         } // Pass to navigation function
                     } else {
                         // Handle case where location is not available
-                        Toast.makeText(context, "Unable to get current location.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "NAVIGATING TO A-BLOCK", Toast.LENGTH_SHORT).show()
                     }
                     // Add a marker at the specified location
                     val markerOptions = MarkerOptions()
@@ -143,25 +144,11 @@ fun CameraFeaturesScreen(locationEngineResult: LocationEngineCallback<LocationEn
             if (mapplsMap != null) {
                 if(mapplsMap != null){
                     openGoogleMaps(context, LocationUtils.globallatitude, LocationUtils.globallongitude, 12.903107560721391, 77.50474336443632)
-                }
-//                else if(mapplsMap != null){
-//                    openGoogleMaps(context, LocationUtils.globallatitude, LocationUtils.globallongitude, 12.9028802,77.5046476)
-//                }
-//                else if(mapplsMap != null){
-//                    openGoogleMaps(context, LocationUtils.globallatitude, LocationUtils.globallongitude, 12.90142866169894, 77.50423046626373)
-//                }
-//                else{
-//                    openGoogleMaps(context, LocationUtils.globallatitude, LocationUtils.globallongitude, 12.90248, 77.50515)
-//                }
-
-            }
+                }         }
         }
     }
 
 }
-
-
-
 private fun showNavigation(currentLatLng: LatLng, destinationLatLng: LatLng,context:Context) {
     val uri = Uri.parse("http://maps.google.com/maps?daddr=${destinationLatLng.latitude},${destinationLatLng.longitude}" +
             "&saddr=${currentLatLng.latitude},${currentLatLng.longitude}")
@@ -170,6 +157,13 @@ private fun showNavigation(currentLatLng: LatLng, destinationLatLng: LatLng,cont
     val intent = Intent(Intent.ACTION_VIEW, uri)
     if (intent.resolveActivity(context.packageManager) != null) {
         Toast.makeText(context, "maps app found on your device.", Toast.LENGTH_SHORT).show()
+        context.startActivity(intent)
+
+        // Launch MainActivity after Google Maps is closed
+//        val mainActivityIntent = Intent(context, MainActivity::class.java).apply {
+//            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+//        }
+        //context.startActivity(mainActivityIntent)
        // startActivity(context, intent)
     } else {
         Toast.makeText(context, "No maps app found on your device.", Toast.LENGTH_SHORT).show()
